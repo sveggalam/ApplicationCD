@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: studentdb
+  name: library
   namespace: argocd
 spec:
   project: default
