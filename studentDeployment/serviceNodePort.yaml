@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: studentdb-service
+spec:
+  type: NodePort
+  selector:
+    app: studentdb
+  ports:
+    - name: http
+      port: 8081         # Service port
+      targetPort: 8081   # Container port
+      nodePort: 30081    # Node port (range 30000–32767)
+
+
+# Behavior with Docker Driver
+# When Minikube uses the Docker driver, it runs your Kubernetes nodes as containers inside Docker, not as separate VMs (like VirtualBox would).
+
+# 🔒 That means:
+# The Minikube IP (e.g., 192.168.xx.xx) is NOT accessible from your host for NodePort traffic, because it belongs to the Docker bridge network.

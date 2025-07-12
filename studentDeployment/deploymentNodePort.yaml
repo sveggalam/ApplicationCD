@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: studentdb-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: studentdb
+  template:
+    metadata:
+      labels:
+        app: studentdb
+    spec:
+      containers:
+        - name: studentdb
+          image: sveggalam/fullstack:student 
+          ports:
+            - containerPort: 8081
+          env:
+            - name: SERVER_PORT
+              value: "8081"

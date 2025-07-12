@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: fullstack-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+spec:
+  rules:
+    - host: localhost
+      http:
+        paths:
+          - path: /students(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: studentdb-service
+                port:
+                  number: 8081
+
+          - path: /library(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: library-service
+                port:
+                  number: 8082
