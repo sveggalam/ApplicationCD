@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/sveggalam/ApplicationCD.git
     targetRevision: HEAD
-    path: argocd/libraryDeployment
+    path: libraryDeployment
   destination:
     server: https://kubernetes.default.svc
     namespace: default
